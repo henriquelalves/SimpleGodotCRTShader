@@ -1,5 +1,8 @@
 # SimpleGodotCRTShader
 A simple Godot shader that simulates CRT Displays.
+![Without Shader](sample.png)
+![With Shader](withshader.png)
+
 
 # How to install
 Just clone the git repository and open the project using Godot.
