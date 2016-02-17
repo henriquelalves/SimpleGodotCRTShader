@@ -8,9 +8,9 @@ A simple Godot shader that simulates CRT Displays.
 
 You can use the shader by just copying the "CRTDisplayShader.shd" to your project (it's the Shader raw code). But if you don't know how to setup the shader material, you can just use the CRTViewportDisplay:
 
-1 - Copy-paste the "CRTViewportDisplay" folder to your project.
-2 - Open the "CRT.scn" on Godot Editor, and set the correct size of the viewport and the frames for your project display size.
-3 - Add the main scene of your project as a child of the Viewport node.
+1. Copy-paste the "CRTViewportDisplay" folder to your project.
+2. Open the "CRT.scn" on Godot Editor, and set the correct size of the viewport and the frames for your project display size.
+3. Add the main scene of your project as a child of the Viewport node.
 
 The viewport will than render your project using the CRT Shader.
 
