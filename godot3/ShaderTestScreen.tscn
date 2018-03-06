@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sample.png" type="Texture" id=1]
 [ext_resource path="res://white.png" type="Texture" id=2]
@@ -35,7 +35,7 @@ if(d < 1.5){
 else{
 	xy = SCREEN_UV;
 }
-COLOR = textureLod(SCREEN_TEXTURE,xy,0);
+COLOR = texture(SCREEN_TEXTURE,xy);
 }
 
 
@@ -48,6 +48,31 @@ render_priority = 0
 shader = SubResource( 1 )
 shader_param/BarrelPower = 1.1
 _sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=3]
+
+code = "shader_type canvas_item;
+
+uniform float color_bleeding = 0.9;
+uniform float bleeding_range = 2;
+uniform float screen_width = 1024;
+void fragment()
+{
+	float pixel_size = 1.0/screen_width*bleeding_range;
+	vec4 color_left = texture(SCREEN_TEXTURE,SCREEN_UV - vec2(pixel_size, 0));
+	vec4 current_color = texture(SCREEN_TEXTURE,SCREEN_UV);
+	current_color = current_color*vec4(color_bleeding,0.5,0.25,1);
+	color_left = color_left*vec4(0.25,0.5,color_bleeding,1);
+	COLOR.rgba = (current_color + color_left);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+shader = SubResource( 3 )
+shader_param/color_bleeding = null
+shader_param/bleeding_range = null
+shader_param/screen_width = null
 
 [node name="Control" type="Control" index="0"]
 
@@ -105,5 +130,25 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Mouse", "Rect" ]
+
+[node name="ColorBleeding" type="TextureRect" parent="Shaders" index="1"]
+
+material = SubResource( 4 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Rect" ]
 
 
