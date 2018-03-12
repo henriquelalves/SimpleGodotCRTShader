@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://sample.png" type="Texture" id=1]
 [ext_resource path="res://white.png" type="Texture" id=2]
@@ -107,6 +107,97 @@ shader_param/size_screen = null
 shader_param/scanline_alpha = null
 shader_param/lines_velocity = null
 
+[sub_resource type="Shader" id=7]
+
+code = "shader_type canvas_item;
+
+uniform float screen_width = 1024;
+uniform float screen_height = 600;
+
+// Curvature
+uniform float BarrelPower =1.1;
+// Color bleeding
+uniform float color_bleeding = 1.2;
+uniform float bleeding_range_x = 3;
+uniform float bleeding_range_y = 3;
+// Scanline
+uniform float lines_distance = 4.0;
+uniform float scan_size = 2.0;
+uniform float scanline_alpha = 0.9;
+uniform float lines_velocity = 30.0;
+vec2 distort(vec2 p) 
+{
+
+	float angle = p.y / p.x;
+	float theta = atan(p.y,p.x);
+	float radius = pow(length(p), BarrelPower);
+	
+	p.x = radius * cos(theta);
+	p.y = radius * sin(theta);
+	
+	return 0.5 * (p + vec2(1.0,1.0));
+}
+
+void get_color_bleeding(inout vec4 current_color,inout vec4 color_left){
+
+	current_color = current_color*vec4(color_bleeding,0.5,0.25,1);
+	color_left = color_left*vec4(0.25,0.5,color_bleeding,1);
+}
+
+void get_color_scanline(vec2 uv,inout vec4 c,float TIME){
+	float line_row = floor((uv.y * screen_height/scan_size) + mod(TIME*lines_velocity, lines_distance));
+
+	float n = 1.0 - ceil((mod(line_row,lines_distance)/lines_distance));
+
+	c = c - n*c*(1.0 - scanline_alpha);
+	c.a = 1.0;
+
+}
+
+void fragment()
+{
+	
+vec2 xy = SCREEN_UV * 2.0;
+xy.x -= 1.0;
+xy.y -= 1.0;
+
+float d = length(xy);
+if(d < 1.5){
+	xy = distort(xy);
+}
+else{
+	xy = SCREEN_UV;
+}
+
+float pixel_size_x = 1.0/screen_width*bleeding_range_x;
+float pixel_size_y = 1.0/screen_height*bleeding_range_y;
+vec4 color_left = texture(SCREEN_TEXTURE,SCREEN_UV - vec2(pixel_size_x, pixel_size_y));
+vec4 current_color = texture(SCREEN_TEXTURE,SCREEN_UV);
+get_color_bleeding(current_color,color_left);
+vec4 c = current_color+color_left;
+get_color_scanline(xy,c,TIME);
+COLOR = c;
+
+}
+"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = SubResource( 7 )
+shader_param/screen_width = null
+shader_param/screen_height = null
+shader_param/BarrelPower = null
+shader_param/color_bleeding = null
+shader_param/bleeding_range_x = null
+shader_param/bleeding_range_y = null
+shader_param/lines_distance = null
+shader_param/scan_size = null
+shader_param/scanline_alpha = null
+shader_param/lines_velocity = null
+_sections_unfolded = [ "shader_param" ]
+
 [node name="Control" type="Control" index="0"]
 
 anchor_left = 0.0
@@ -146,6 +237,7 @@ size_flags_vertical = 1
 
 [node name="Curvature" type="TextureRect" parent="Shaders" index="0"]
 
+visible = false
 material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
@@ -187,7 +279,28 @@ _sections_unfolded = [ "Material", "Rect" ]
 
 [node name="ScanLine" type="TextureRect" parent="Shaders" index="2"]
 
+visible = false
 material = SubResource( 6 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Rect" ]
+
+[node name="CRT" type="TextureRect" parent="Shaders" index="3"]
+
+material = SubResource( 8 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
