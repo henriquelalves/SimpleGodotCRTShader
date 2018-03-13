@@ -6,7 +6,9 @@ A simple Godot (v2.x) shader that simulates CRT Displays.
 
 # How to install
 
-**Warning**: This is a Godot 2.x shader, not compatible (yet) with Godot 3.x.
+**Compatibility**: Thank you MohabMohamed for porting the Shader to Godot 3.x! Both projects can be found on their respective folders. To test, remember to change the variable values on the shader script.
+
+## For Godot 2.x
 
 You can use the shader by just copying the "CRTDisplayShader.shd" to your project (it's the Shader raw code). But if you don't know how to setup the shader material, you can just use the CRTViewportDisplay:
 
