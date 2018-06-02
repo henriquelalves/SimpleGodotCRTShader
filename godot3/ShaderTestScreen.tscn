@@ -171,8 +171,8 @@ else{
 
 float pixel_size_x = 1.0/screen_width*bleeding_range_x;
 float pixel_size_y = 1.0/screen_height*bleeding_range_y;
-vec4 color_left = texture(SCREEN_TEXTURE,SCREEN_UV - vec2(pixel_size_x, pixel_size_y));
-vec4 current_color = texture(SCREEN_TEXTURE,SCREEN_UV);
+vec4 color_left = texture(SCREEN_TEXTURE,xy - vec2(pixel_size_x, pixel_size_y));
+vec4 current_color = texture(SCREEN_TEXTURE,xy);
 get_color_bleeding(current_color,color_left);
 vec4 c = current_color+color_left;
 get_color_scanline(xy,c,TIME);
