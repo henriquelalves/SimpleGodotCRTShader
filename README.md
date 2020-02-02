@@ -1,5 +1,5 @@
 # SimpleGodotCRTShader
-A simple Godot (v2.x) shader that simulates CRT Displays.
+A simple Godot (v2.x and v3.x) shader that simulates CRT Displays.
 ![Without Shader](sample.png)
 ![With Shader](withshader.png)
 
