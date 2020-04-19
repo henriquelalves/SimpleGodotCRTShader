@@ -3,12 +3,7 @@ A simple Godot (v2.x) shader that simulates CRT Displays.
 ![Without Shader](sample.png)
 ![With Shader](withshader.png)
 
-
-# How to install
-
-**Compatibility**: Thank you MohabMohamed for porting the Shader to Godot 3.x! Both projects can be found on their respective folders. To test, remember to change the variable values on the shader script.
-
-## For Godot 2.x
+## How to use it
 
 You can use the shader by just copying the "CRTDisplayShader.shd" to your project (it's the Shader raw code). But if you don't know how to setup the shader material, you can just use the CRTViewportDisplay:
 
@@ -22,7 +17,7 @@ You can modify the values of the Shader using the Uniform Variables.
 
 A tutorial on how to install the Shader (YouTube): [https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be](https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be)
 
-# How the Shader works
+## How the Shader works
 This Shader is made of 3 main components:
 
 * Distortion: It is the effect that causes the '3D'-like monitor effect.
@@ -38,4 +33,6 @@ The effects are based on these articles:
 
 A shoutout for the Godot developpers group on facebook! I would be completely lost without you guys, haha.
 
+## Credits
 The screen sample was made by 'ansimuz' - the art is in public domain (CC0), and can be found in: http://opengameart.org/content/country-side-platform-tiles.
+Character was made by EdwoodNigma - the spritesheet is in public domain (CC0), and can be found in: https://opengameart.org/content/platformer-character-0
