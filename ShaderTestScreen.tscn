@@ -1,8 +1,94 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://sample.png" type="Texture" id=1]
 [ext_resource path="res://white.png" type="Texture" id=2]
 [ext_resource path="res://CRTFrame.png" type="Texture" id=3]
+[ext_resource path="res://character.png" type="Texture" id=4]
+[ext_resource path="res://Character.gd" type="Script" id=5]
+[ext_resource path="res://CRTShader.shader" type="Shader" id=6]
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 120, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 140, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 160, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 180, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 220, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 240, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 260, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 20, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 40, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 60, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 80, 0, 20, 24 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 20, 24 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -97,91 +183,18 @@ shader_param/size_screen = 600.0
 shader_param/scanline_alpha = 0.9
 shader_param/lines_velocity = 30.0
 
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform float screen_width = 1024;
-uniform float screen_height = 600;
-
-// Curvature
-uniform float BarrelPower =1.1;
-// Color bleeding
-uniform float color_bleeding = 1.2;
-uniform float bleeding_range_x = 3;
-uniform float bleeding_range_y = 3;
-// Scanline
-uniform float lines_distance = 4.0;
-uniform float scan_size = 2.0;
-uniform float scanline_alpha = 0.9;
-uniform float lines_velocity = 30.0;
-vec2 distort(vec2 p) 
-{
-
-	float angle = p.y / p.x;
-	float theta = atan(p.y,p.x);
-	float radius = pow(length(p), BarrelPower);
-	
-	p.x = radius * cos(theta);
-	p.y = radius * sin(theta);
-	
-	return 0.5 * (p + vec2(1.0,1.0));
-}
-
-void get_color_bleeding(inout vec4 current_color,inout vec4 color_left){
-
-	current_color = current_color*vec4(color_bleeding,0.5,0.25,1);
-	color_left = color_left*vec4(0.25,0.5,color_bleeding,1);
-}
-
-void get_color_scanline(vec2 uv,inout vec4 c,float time){
-	float line_row = floor((uv.y * screen_height/scan_size) + mod(time*lines_velocity, lines_distance));
-
-	float n = 1.0 - ceil((mod(line_row,lines_distance)/lines_distance));
-
-	c = c - n*c*(1.0 - scanline_alpha);
-	c.a = 1.0;
-
-}
-
-void fragment()
-{
-	
-vec2 xy = SCREEN_UV * 2.0;
-xy.x -= 1.0;
-xy.y -= 1.0;
-
-float d = length(xy);
-if(d < 1.5){
-	xy = distort(xy);
-}
-else{
-	xy = SCREEN_UV;
-}
-
-float pixel_size_x = 1.0/screen_width*bleeding_range_x;
-float pixel_size_y = 1.0/screen_height*bleeding_range_y;
-vec4 color_left = texture(SCREEN_TEXTURE,xy - vec2(pixel_size_x, pixel_size_y));
-vec4 current_color = texture(SCREEN_TEXTURE,xy);
-get_color_bleeding(current_color,color_left);
-vec4 c = current_color+color_left;
-get_color_scanline(xy,c,TIME);
-COLOR = c;
-
-}
-"
-
 [sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+shader = ExtResource( 6 )
 shader_param/screen_width = 1024.0
 shader_param/screen_height = 600.0
-shader_param/BarrelPower = 1.1
-shader_param/color_bleeding = 1.0
-shader_param/bleeding_range_x = 1.0
-shader_param/bleeding_range_y = 1.0
-shader_param/lines_distance = 4.0
+shader_param/BarrelPower = 1.12
+shader_param/color_bleeding = 2.0
+shader_param/bleeding_range_x = 2.0
+shader_param/bleeding_range_y = 2.0
+shader_param/lines_distance = 3.0
 shader_param/scan_size = 2.0
 shader_param/scanline_alpha = 0.9
-shader_param/lines_velocity = 30.0
+shader_param/lines_velocity = 40.0
 
 [node name="Control" type="Control"]
 margin_right = 40.0
@@ -191,9 +204,19 @@ margin_bottom = 40.0
 texture = ExtResource( 1 )
 centered = false
 
+[node name="Character" type="AnimatedSprite" parent="."]
+position = Vector2( 95.038, 473.203 )
+scale = Vector2( 3.77667, 3.77667 )
+frames = SubResource( 23 )
+animation = "idle"
+script = ExtResource( 5 )
+
 [node name="Shaders" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Curvature" type="TextureRect" parent="Shaders"]
 visible = false
@@ -234,3 +257,6 @@ margin_right = 1082.0
 margin_bottom = 812.0
 rect_scale = Vector2( 0.946396, 0.738916 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

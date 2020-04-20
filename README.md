@@ -1,28 +1,22 @@
 # SimpleGodotCRTShader
-A simple Godot (v2.x) shader that simulates CRT Displays.
+A simple Godot shader that simulates CRT Displays.
+
 ![Without Shader](sample.png)
 ![With Shader](withshader.png)
 
+## How to install
 
-# How to install
+You can copy simply copy the CRTShader.shader
 
-**Compatibility**: Thank you MohabMohamed for porting the Shader to Godot 3.x! Both projects can be found on their respective folders. To test, remember to change the variable values on the shader script.
+A tutorial on how to install the Shader on Godot 2.x (YouTube): [https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be](https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be)
 
-## For Godot 2.x
+## For Godot 3.x
 
-You can use the shader by just copying the "CRTDisplayShader.shd" to your project (it's the Shader raw code). But if you don't know how to setup the shader material, you can just use the CRTViewportDisplay:
-
-1. Copy-paste the "CRTViewportDisplay" folder to your project.
-2. Open the "CRT.scn" on Godot Editor, and set the correct size of the viewport and the frames for your project display size.
-3. Add the main scene of your project as a child of the Viewport node.
-
-The viewport will than render your project using the CRT Shader.
+You can simply copy the CRTShader.shader code to use on your project; to set it up, just use it in a an TextureRect with a white texture. Your game must be running 'under' the node for the CRT Shader to have any effect.
 
 You can modify the values of the Shader using the Uniform Variables.
 
-A tutorial on how to install the Shader (YouTube): [https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be](https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be)
-
-# How the Shader works
+## How the Shader works
 This Shader is made of 3 main components:
 
 * Distortion: It is the effect that causes the '3D'-like monitor effect.
@@ -36,6 +30,8 @@ The effects are based on these articles:
 * Distortion: http://www.geeks3d.com/20140213/glsl-shader-library-fish-eye-and-dome-and-barrel-distortion-post-processing-filters/2/
 * Color Bleeding and Scanlines: http://www.magneticrealms.com/posts/2014/02/03/a-crt-filter-without-shaders/
 
-A shoutout for the Godot developpers group on facebook! I would be completely lost without you guys, haha.
+## Credits
 
 The screen sample was made by 'ansimuz' - the art is in public domain (CC0), and can be found in: http://opengameart.org/content/country-side-platform-tiles.
+
+Character was made by EdwoodNigma - the spritesheet is in public domain (CC0), and can be found in: https://opengameart.org/content/platformer-character-0

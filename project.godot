@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ShaderTest"
+config/name="CRTShader"
 run/main_scene="res://ShaderTestScreen.tscn"
-config/icon="res://icon.png"
+config/icon="res://shaderIcon.png"
 
 [rendering]
 
