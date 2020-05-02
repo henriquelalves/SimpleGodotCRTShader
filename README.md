@@ -1,4 +1,7 @@
 # SimpleGodotCRTShader
+
+*For more addons, check [my GitHub](https://github.com/henriquelalves) and [my itch.io](https://perons.itch.io/) page.*
+
 A simple Godot shader that simulates CRT Displays.
 
 ![Without Shader](sample.png)
