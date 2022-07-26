@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sample.png" type="Texture" id=1]
 [ext_resource path="res://white.png" type="Texture" id=2]
-[ext_resource path="res://CRTFrame.png" type="Texture" id=3]
+[ext_resource path="res://addons/crt_shader/CRTFrame.png" type="Texture" id=3]
 [ext_resource path="res://character.png" type="Texture" id=4]
 [ext_resource path="res://Character.gd" type="Script" id=5]
-[ext_resource path="res://CRTShader.shader" type="Shader" id=6]
+[ext_resource path="res://addons/crt_shader/ShaderScreen.material" type="Material" id=6]
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
@@ -183,19 +183,6 @@ shader_param/size_screen = 600.0
 shader_param/scanline_alpha = 0.9
 shader_param/lines_velocity = 30.0
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 6 )
-shader_param/screen_width = 1024.0
-shader_param/screen_height = 600.0
-shader_param/BarrelPower = 1.12
-shader_param/color_bleeding = 2.0
-shader_param/bleeding_range_x = 2.0
-shader_param/bleeding_range_y = 2.0
-shader_param/lines_distance = 3.0
-shader_param/scan_size = 2.0
-shader_param/scanline_alpha = 0.9
-shader_param/lines_velocity = 40.0
-
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -243,7 +230,7 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="CRT" type="TextureRect" parent="Shaders"]
-material = SubResource( 8 )
+material = ExtResource( 6 )
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 2 )

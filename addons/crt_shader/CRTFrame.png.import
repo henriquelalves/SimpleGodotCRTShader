@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CRTFrame.png-96837578d803d46c371247267c1fa407.stex"
+path="res://.import/CRTFrame.png-872eedb156a5c6ffe1f1a64a1e49445b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CRTFrame.png"
-dest_files=[ "res://.import/CRTFrame.png-96837578d803d46c371247267c1fa407.stex" ]
+source_file="res://addons/crt_shader/CRTFrame.png"
+dest_files=[ "res://.import/CRTFrame.png-872eedb156a5c6ffe1f1a64a1e49445b.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
