@@ -1,0 +1,442 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/crt_shader/CRTShader.gd" type="Script" id=1]
+[ext_resource path="res://addons/crt_shader/ShaderScreen.material" type="Material" id=2]
+[ext_resource path="res://addons/crt_shader/CRTFrame.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Glitch"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/BarrelPower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.18, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 1.15, 1.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/color_bleeding")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 5.0, 5.0, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/bleeding_range_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, -4.0, -4.0, 1.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/bleeding_range_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, -1.0, -1.0, 1.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/lines_distance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3.0, 0.0, 0.0, 3.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:material:shader_param/scan_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.0, 1.0, 2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:material:shader_param/scanline_alpha")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.9, 0.0, 0.0, 0.9 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:material:shader_param/lines_velocity")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.16, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 40.0, 0.0, 0.0, 40.0 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.18 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "call_funcref"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "GlitchLoop"
+length = 0.6
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/BarrelPower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/color_bleeding")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 3.0, 3.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/bleeding_range_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -4.0, -4.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/bleeding_range_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -2.0, -2.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/lines_distance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:material:shader_param/scan_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 3.0, 1.0, 1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:material:shader_param/scanline_alpha")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:material:shader_param/lines_velocity")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Glitch_Start"
+length = 0.22
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/BarrelPower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.15, 1.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/color_bleeding")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 5.0, 5.0, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/bleeding_range_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -4.0, -4.0, 1.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/bleeding_range_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -1.0, -1.0, 1.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/lines_distance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 3.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:material:shader_param/scan_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:material:shader_param/scanline_alpha")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.9 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:material:shader_param/lines_velocity")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.02, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 40.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/BarrelPower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/color_bleeding")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/bleeding_range_x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/bleeding_range_y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/lines_distance")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:material:shader_param/scan_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:material:shader_param/scanline_alpha")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.9 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:material:shader_param/lines_velocity")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 40.0 ]
+}
+
+[node name="CRTCanvasLayer" type="CanvasLayer"]
+
+[node name="CRTShader" type="ColorRect" parent="."]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="GlitchAnimation" type="AnimationPlayer" parent="CRTShader"]
+anims/Glitch = SubResource( 4 )
+anims/GlitchLoop = SubResource( 6 )
+anims/Glitch_Start = SubResource( 7 )
+anims/RESET = SubResource( 5 )
+
+[node name="FrameTexture" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
