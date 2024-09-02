@@ -1,9 +1,9 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
 var moving = 0
 
 func _ready():
-	playing = true
+	play()
 	animation = "idle"
 
 func _process(delta):

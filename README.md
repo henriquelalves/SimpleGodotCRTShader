@@ -7,17 +7,15 @@ A simple Godot shader that simulates CRT Displays.
 ![Without Shader](sample.png)
 ![With Shader](withshader.png)
 
-## How to install
+## How to install (Godot 4.x)
 
-You can copy simply copy the CRTShader.shader
+You can copy simply copy the CRTShader.shader to any ColorRect.
 
-A tutorial on how to install the Shader on Godot 2.x (YouTube): [https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be](https://www.youtube.com/watch?v=ydrC-3Uy-aY&feature=youtu.be)
+You can also just add the `CRTScreen` node to your project (a node that sets some of the shader parameters automatically).
 
-## For Godot 3.x
+### For Godot 2.x and 3.x
 
-You can simply copy the CRTShader.shader code to use on your project; to set it up, just use it in a an TextureRect with a white texture. Your game must be running 'under' the node for the CRT Shader to have any effect.
-
-You can modify the values of the Shader using the Uniform Variables.
+There are separate branches for Godot 2.x and 3.x versions.
 
 ## How the Shader works
 This Shader is made of 3 main components:

@@ -6,22 +6,26 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-}
+config_version=5
 
 [application]
 
 config/name="CRTShader"
 run/main_scene="res://ShaderTestScreen.tscn"
+config/features=PackedStringArray("4.3")
 config/icon="res://shaderIcon.png"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=600
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/crt_shader/plugin.cfg" )
+enabled=PackedStringArray("res://addons/crt_shader/plugin.cfg")
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_environment="res://default_env.tres"

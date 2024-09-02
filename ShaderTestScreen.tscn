@@ -1,249 +1,161 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=22 format=3 uid="uid://d3q6ao60jioly"]
 
-[ext_resource path="res://sample.png" type="Texture" id=1]
-[ext_resource path="res://white.png" type="Texture" id=2]
-[ext_resource path="res://addons/crt_shader/CRTFrame.png" type="Texture" id=3]
-[ext_resource path="res://character.png" type="Texture" id=4]
-[ext_resource path="res://Character.gd" type="Script" id=5]
-[ext_resource path="res://addons/crt_shader/ShaderScreen.material" type="Material" id=6]
+[ext_resource type="Texture2D" uid="uid://6qyj7vxdxs7h" path="res://samples/sample.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b7rrbl58e5lm6" path="res://addons/crt_shader/CRTFrame.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://hbmkqqavbg6" path="res://character.png" id="4"]
+[ext_resource type="Script" path="res://Character.gd" id="5"]
+[ext_resource type="Script" path="res://addons/crt_shader/crt_screen.gd" id="5_ks51q"]
+[ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="6"]
 
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 120, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("4")
+region = Rect2(120, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 140, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("4")
+region = Rect2(140, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 160, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("4")
+region = Rect2(160, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 180, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("4")
+region = Rect2(180, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 200, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("4")
+region = Rect2(200, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 220, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("4")
+region = Rect2(220, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("4")
+region = Rect2(240, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 260, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("4")
+region = Rect2(260, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 20, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("4")
+region = Rect2(20, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 40, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource("4")
+region = Rect2(40, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 60, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("4")
+region = Rect2(60, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 80, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("4")
+region = Rect2(80, 0, 20, 24)
 
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 100, 0, 20, 24 )
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("4")
+region = Rect2(100, 0, 20, 24)
 
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+[sub_resource type="SpriteFrames" id="23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}],
 "loop": true,
-"name": "idle",
+"name": &"idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("17")
+}, {
+"duration": 1.0,
+"texture": SubResource("18")
+}, {
+"duration": 1.0,
+"texture": SubResource("19")
+}, {
+"duration": 1.0,
+"texture": SubResource("20")
+}, {
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}],
 "loop": true,
-"name": "run",
+"name": &"run",
 "speed": 5.0
-} ]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform float BarrelPower =1.1;
-
-vec2 distort(vec2 p) 
-{
-
-	float angle = p.y / p.x;
-	float theta = atan(p.y,p.x);
-	float radius = pow(length(p), BarrelPower);
-	
-	p.x = radius * cos(theta);
-	p.y = radius * sin(theta);
-	
-	return 0.5 * (p + vec2(1.0,1.0));
-}
-void fragment()
-{
-	
-vec2 xy = SCREEN_UV * 2.0;
-xy.x -= 1.0;
-xy.y -= 1.0;
-
-float d = length(xy);
-if(d < 1.5){
-	xy = distort(xy);
-}
-else{
-	xy = SCREEN_UV;
-}
-COLOR = texture(SCREEN_TEXTURE,xy);
-}
-
-
-
-"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/BarrelPower = 1.1
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform float color_bleeding = 0.9;
-uniform float bleeding_range = 2;
-uniform float screen_width = 1024;
-void fragment()
-{
-	float pixel_size = 1.0/screen_width*bleeding_range;
-	vec4 color_left = texture(SCREEN_TEXTURE,SCREEN_UV - vec2(pixel_size, 0));
-	vec4 current_color = texture(SCREEN_TEXTURE,SCREEN_UV);
-	current_color = current_color*vec4(color_bleeding,0.5,0.25,1);
-	color_left = color_left*vec4(0.25,0.5,color_bleeding,1);
-	COLOR.rgba = (current_color + color_left);
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/color_bleeding = 0.9
-shader_param/bleeding_range = 2.0
-shader_param/screen_width = 1024.0
-
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform float lines_distance = 4.0;
-uniform float pixel_size = 2.0;
-uniform float size_screen = 600;
-uniform float scanline_alpha = 0.9;
-uniform float lines_velocity = 30.0;
-
-void fragment()
-{
-	float line_row = floor((SCREEN_UV.y * size_screen/pixel_size) + mod(TIME*lines_velocity, lines_distance));
-
-	float n = 1.0 - ceil((mod(line_row,lines_distance)/lines_distance));
-
-vec4 c = texture(SCREEN_TEXTURE,SCREEN_UV);
-c = c - n*c*(1.0 - scanline_alpha);
-c.a = 1.0;
-COLOR = c;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/lines_distance = 4.0
-shader_param/pixel_size = 2.0
-shader_param/size_screen = 600.0
-shader_param/scanline_alpha = 0.9
-shader_param/lines_velocity = 30.0
+}]
 
 [node name="Control" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
 centered = false
 
-[node name="Character" type="AnimatedSprite" parent="."]
-position = Vector2( 95.038, 473.203 )
-scale = Vector2( 3.77667, 3.77667 )
-frames = SubResource( 23 )
-animation = "idle"
-script = ExtResource( 5 )
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(95.038, 473.203)
+scale = Vector2(3.77667, 3.77667)
+sprite_frames = SubResource("23")
+animation = &"idle"
+frame_progress = 0.646237
+script = ExtResource("5")
 
-[node name="Shaders" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Curvature" type="TextureRect" parent="Shaders"]
-visible = false
-material = SubResource( 2 )
-margin_right = 1024.0
-margin_bottom = 600.0
-texture = ExtResource( 2 )
-expand = true
-
-[node name="ColorBleeding" type="TextureRect" parent="Shaders"]
-visible = false
-material = SubResource( 4 )
-margin_right = 1024.0
-margin_bottom = 600.0
-texture = ExtResource( 2 )
-expand = true
-
-[node name="ScanLine" type="TextureRect" parent="Shaders"]
-visible = false
-material = SubResource( 6 )
-margin_right = 1024.0
-margin_bottom = 600.0
-texture = ExtResource( 2 )
-expand = true
-
-[node name="CRT" type="TextureRect" parent="Shaders"]
-material = ExtResource( 6 )
-margin_right = 1024.0
-margin_bottom = 600.0
-texture = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CRTScreen" type="ColorRect" parent="."]
+material = ExtResource("6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ks51q")
 
 [node name="CRTFrame" type="TextureRect" parent="."]
-margin_right = 1082.0
-margin_bottom = 812.0
-rect_scale = Vector2( 0.946396, 0.738916 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 58.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.946396, 0.738916)
+texture = ExtResource("3")

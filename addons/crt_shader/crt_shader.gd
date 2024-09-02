@@ -1,10 +1,10 @@
-tool
+@tool
 extends EditorPlugin
 
 
 func _enter_tree():
-	pass
+	add_custom_type("CRTScreen", "ColorRect", preload("res://addons/crt_shader/crt_screen.gd"), preload("res://addons/crt_shader/icon.png"))
 
 
 func _exit_tree():
-	pass
+	remove_custom_type("CRTScreen")
